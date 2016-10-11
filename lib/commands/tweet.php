@@ -95,7 +95,7 @@ $commandTweet = new Command( 'tweet', 'Generate a portrait and tweet it', functi
 	/* Post it */
 	try
 	{
-		// $bot->postTweetToTwitter( $tweet );
+		$bot->postTweetToTwitter( $tweet );
 	}
 	catch( \Exception $e )
 	{
