@@ -1,0 +1,12 @@
+[submodule "vendor/huxtable/core"]
+	path = vendor/huxtable/core
+	url = https://github.com/huxtable/core.git
+[submodule "vendor/huxtable/cli"]
+	path = vendor/huxtable/cli
+	url = https://github.com/huxtable/cli.git
+[submodule "vendor/huxtable/bot"]
+	path = vendor/huxtable/bot
+	url = https://github.com/huxtable/bot.git
+[submodule "vendor/huxtable/pixel"]
+	path = vendor/huxtable/pixel
+	url = https://github.com/huxtable/pixel.git
