@@ -9,7 +9,7 @@ use Huxtable\Core\File;
 use Huxtable\Pixel;
 use Spyc;
 
-class Bot extends \Huxtable\Bot\Bot
+class Bot
 {
 	/**
 	 * @var	Huxtable\Pixel\Canvas
@@ -22,14 +22,10 @@ class Bot extends \Huxtable\Bot\Bot
 	protected $dirProject;
 
 	/**
-	 * @param	string							$name			Bot name
-	 * @param	Huxtable\Core\File\Directory	$dirData		ex., /var/opt/<bot>
 	 * @return	void
 	 */
-	public function __construct( $name, File\Directory $dirData )
+	public function __construct()
 	{
-		parent::__construct( $name, $dirData );
-
 		/* Directories */
 		$pathProject = dirname( dirname( __DIR__ ) );
 		$this->dirProject = new File\Directory( $pathProject );
