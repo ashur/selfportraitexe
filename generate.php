@@ -6,6 +6,7 @@ $pathBase		= __DIR__;
 $pathLib		= $pathBase . '/lib';
 $pathApp		= $pathLib  . '/Portrait';
 $pathVendor		= $pathBase . '/vendor';
+$pathTemp		= getenv( 'SELFPORTRAIT_TEMPDIR' );
 
 /*
  * Initialize autoloading
@@ -21,6 +22,18 @@ include_once( $pathVendor . '/huxtable/pixel/autoload.php' );
  */
 $dirApp = new File\Directory( $pathBase );
 $dirLib = $dirApp->childDir( 'lib' );
+
+$pathTemp = str_replace( '~', getenv( 'HOME' ), $pathTemp );
+if( $pathTemp == false )
+{
+	echo 'Missing required environment variable SELFPORTRAIT_TEMPDIR' . PHP_EOL;
+	exit( 1 );
+}
+$dirTemp = new File\Directory( $pathTemp );
+if( !$dirTemp->exists() )
+{
+    $dirTemp->create();
+}
 
 /*
  * Bot configuration
@@ -72,7 +85,10 @@ else
 /* Right */
 $bot->drawPortraitFrame( 27 + $frameGutter );
 
-$fileImage = $bot->renderPortrait();
+/**
+ * Render image
+ */
+$fileImage = $bot->renderPortrait( $dirTemp );
 
 /*
  * Update portrait file

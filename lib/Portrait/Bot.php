@@ -448,9 +448,9 @@ class Bot
 	 * Draw the portrait to disk
 	 * @return	Huxtable\Core\File\File
 	 */
-	public function renderPortrait()
+	public function renderPortrait( File\Directory $dirTemp )
 	{
-		$fileImage = $this->dirTemp->child( 'portrait.png' );
+		$fileImage = $dirTemp->child( 'portrait.png' );
 		$this->canvas->render( $fileImage );
 
 		return $fileImage;
