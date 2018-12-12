@@ -1,5 +1,0 @@
-<?php
-
-/*
- * Global helper methods
- */
