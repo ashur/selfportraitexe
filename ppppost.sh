@@ -1,5 +1,6 @@
 BOTNAME="@selfportrait"
 BASE=~/selfportrait
+export SELFPORTRAIT_TEMPDIR="${BASE}/tmp"
 
 log()
 {
