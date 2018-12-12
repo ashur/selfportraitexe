@@ -10,6 +10,22 @@ Clone the repository along with its submodules:
 $ git clone --recursive https://github.com/ashur/selfportraitexe.git
 ```
 
+### Requirements
+
+The following packages are required:
+
+- `php7.0` (or newer)
+- `imagemagick`
+- `php-imagick`
+
+### Setup
+
+Configure the Git user name and email for commit history:
+
+```
+$ ./git-config.sh
+```
+
 ## Usage
 
 ```
