@@ -9,7 +9,7 @@ use Huxtable\Core\File;
 use Huxtable\Pixel;
 use Spyc;
 
-class Bot extends \Huxtable\Bot\Bot
+class Bot
 {
 	/**
 	 * @var	Huxtable\Pixel\Canvas
@@ -22,14 +22,10 @@ class Bot extends \Huxtable\Bot\Bot
 	protected $dirProject;
 
 	/**
-	 * @param	string							$name			Bot name
-	 * @param	Huxtable\Core\File\Directory	$dirData		ex., /var/opt/<bot>
 	 * @return	void
 	 */
-	public function __construct( $name, File\Directory $dirData )
+	public function __construct()
 	{
-		parent::__construct( $name, $dirData );
-
 		/* Directories */
 		$pathProject = dirname( dirname( __DIR__ ) );
 		$this->dirProject = new File\Directory( $pathProject );
@@ -217,26 +213,6 @@ class Bot extends \Huxtable\Bot\Bot
 		$xOffset_fold3 = $xOffset + 13;
 		$yOffset_fold3 = $yOffset + 21;
 
-		// $this->canvas->drawAt( $xOffset_fold3 + 13, $yOffset_fold3 + 11, $colorHighlightLow );
-		// $this->canvas->drawAt( $xOffset_fold3 + 14, $yOffset_fold3 + 11, $colorHighlightLow );
-		//
-		// $this->canvas->drawAt( $xOffset_fold3 + 15, $yOffset_fold3 + 12, $colorHighlightLow );
-		// $this->canvas->drawAt( $xOffset_fold3 + 16, $yOffset_fold3 + 12, $colorHighlightLow );
-		// $this->canvas->drawAt( $xOffset_fold3 + 17, $yOffset_fold3 + 12, $colorHighlightLow );
-		// $this->canvas->drawAt( $xOffset_fold3 + 18, $yOffset_fold3 + 12, $colorHighlightLow );
-		// $this->canvas->drawAt( $xOffset_fold3 + 19, $yOffset_fold3 + 12, $colorHighlightLow );
-		// $this->canvas->drawAt( $xOffset_fold3 + 20, $yOffset_fold3 + 12, $colorHighlightLow );
-		//
-		// $this->canvas->drawAt( $xOffset_fold3 + 21, $yOffset_fold3 + 11, $colorHighlightLow );
-		// $this->canvas->drawAt( $xOffset_fold3 + 22, $yOffset_fold3 + 11, $colorHighlightLow );
-		// $this->canvas->drawAt( $xOffset_fold3 + 23, $yOffset_fold3 + 11, $colorHighlightLow );
-		//
-		// $this->canvas->drawAt( $xOffset_fold3 + 24, $yOffset_fold3 + 10, $colorHighlightLow );
-		// $this->canvas->drawAt( $xOffset_fold3 + 25, $yOffset_fold3 + 10, $colorHighlightLow );
-		// $this->canvas->drawAt( $xOffset_fold3 + 26, $yOffset_fold3 + 10, $colorHighlightLow );
-		//
-		// $this->canvas->drawAt( $xOffset_fold3 + 27, $yOffset_fold3 +  9, $colorHighlightLow );
-
 		// Fold 4
 		$xOffset_fold4 = $xOffset + 57;
 		$yOffset_fold4 = $yOffset + 3;
@@ -299,28 +275,6 @@ class Bot extends \Huxtable\Bot\Bot
 		// Fold 6
 		$xOffset_fold6 = $xOffset + 57;
 		$yOffset_fold6 = $yOffset + 14;
-
-		// $this->canvas->drawAt( $xOffset_fold6 + 0, $yOffset_fold6 + 0, $colorHighlightMid );
-		// $this->canvas->drawAt( $xOffset_fold6 + 0, $yOffset_fold6 + 1, $colorHighlightMid );
-		// $this->canvas->drawAt( $xOffset_fold6 + 0, $yOffset_fold6 + 2, $colorHighlightMid );
-		// $this->canvas->drawAt( $xOffset_fold6 - 0, $yOffset_fold6 + 3, $colorHighlightMid );
-		//
-		// $this->canvas->drawAt( $xOffset_fold6 - 1, $yOffset_fold6 + 4, $colorHighlightMid );
-		// $this->canvas->drawAt( $xOffset_fold6 - 1, $yOffset_fold6 + 5, $colorHighlightMid );
-		// $this->canvas->drawAt( $xOffset_fold6 - 1, $yOffset_fold6 + 6, $colorHighlightMid );
-		// $this->canvas->drawAt( $xOffset_fold6 - 1, $yOffset_fold6 + 7, $colorHighlightMid );
-		//
-		// $this->canvas->drawAt( $xOffset_fold6 - 2, $yOffset_fold6 + 8, $colorHighlightMid );
-		// $this->canvas->drawAt( $xOffset_fold6 - 2, $yOffset_fold6 + 9, $colorHighlightMid );
-		// $this->canvas->drawAt( $xOffset_fold6 - 2, $yOffset_fold6 + 10, $colorHighlightMid );
-		//
-		// $this->canvas->drawAt( $xOffset_fold6 - 3, $yOffset_fold6 + 11, $colorHighlightMid );
-		// $this->canvas->drawAt( $xOffset_fold6 - 3, $yOffset_fold6 + 12, $colorHighlightMid );
-		// $this->canvas->drawAt( $xOffset_fold6 - 3, $yOffset_fold6 + 13, $colorHighlightMid );
-		//
-		// $this->canvas->drawAt( $xOffset_fold6 - 4, $yOffset_fold6 + 14, $colorHighlightMid );
-		// $this->canvas->drawAt( $xOffset_fold6 - 4, $yOffset_fold6 + 15, $colorHighlightMid );
-		// $this->canvas->drawAt( $xOffset_fold6 - 4, $yOffset_fold6 + 16, $colorHighlightMid );
 	}
 
 	/**
@@ -452,9 +406,9 @@ class Bot extends \Huxtable\Bot\Bot
 	 * Draw the portrait to disk
 	 * @return	Huxtable\Core\File\File
 	 */
-	public function renderPortrait()
+	public function renderPortrait( File\Directory $dirTemp )
 	{
-		$fileImage = $this->dirTemp->child( 'portrait.png' );
+		$fileImage = $dirTemp->child( 'portrait.png' );
 		$this->canvas->render( $fileImage );
 
 		return $fileImage;

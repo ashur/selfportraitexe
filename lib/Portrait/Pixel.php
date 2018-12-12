@@ -79,7 +79,7 @@ class Pixel
 	 * @param	array	$pixelData
 	 * @return	self
 	 */
-	public function getInstanceFromData( array $pixelData )
+	static public function getInstanceFromData( array $pixelData )
 	{
 		$pixel = new self( $pixelData['cols'], $pixelData['rows'], $pixelData['xOffset'], $pixelData['yOffset'] );
 
