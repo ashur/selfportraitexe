@@ -36,9 +36,22 @@ if( !$dirTemp->exists() )
 }
 
 /*
+ * Colors
+ */
+
+$colors['ink'] = '#222232';
+$colors['canvas'] = '#ffffff';
+$colors['matte'] = '#dddcdc';
+$colors['pins'] = '#dddddd';
+$colors['sheet'] = '#150329';
+$colors['sheet_lowlight'] = '#431B56';
+$colors['sheet_midlight'] = '#682E7A';
+
+/*
  * Bot configuration
  */
 $bot = new Portrait\Bot();
+$bot->setColors( $colors );
 
 /*
  * Generate the image
@@ -51,6 +64,7 @@ if( !$portraitFile->exists() )
 }
 
 $portrait = Portrait\Portrait::getInstanceFromFile( $portraitFile );
+$portrait->setBackgroundColor( $colors['canvas'] );
 
 $commitHash = $bot->getCurrentCommitHash();
 $commitShortHash = $commitHash != null ? substr( $commitHash, 0, 8 ) : 'the beginning';
@@ -78,7 +92,7 @@ if( $portrait->id == 0 )
 /* Draw the portrait */
 else
 {
-	$portrait->applyHash( $commitHash );
+	$portrait->applyHash( $commitHash, $colors['ink'] );
 	$bot->drawPortrait( $portrait );
 }
 
