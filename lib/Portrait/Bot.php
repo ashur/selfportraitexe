@@ -17,6 +17,11 @@ class Bot
 	protected $canvas;
 
 	/**
+	 * @var	array
+	 */
+	protected $colors=[];
+
+	/**
 	 * @var	Huxtable\Core\File\File
 	 */
 	protected $dirProject;
@@ -44,7 +49,7 @@ class Bot
 	 */
 	public function drawPortrait( Portrait $portrait )
 	{
-		$this->canvas->compositeCanvas( $portrait->getCanvas(), 210, 135 );
+		$this->canvas->compositeCanvas( $portrait->getCanvas(), 190, 135 );
 	}
 
 	/**
@@ -57,11 +62,10 @@ class Bot
 		$frameCols = 62;
 		$frameRows = 40;
 
-		$colorHighlightLow = '#ac0001';
-		$colorHighlightMid = '#ac0001';
-		$colorHighlightHigh = '#ff0000';
-		$colorPins = '#000000';
-		$colorSheetBase = '#e30000';
+		$colorHighlightLow = $this->colors['sheet_lowlight'];
+		$colorHighlightMid = $this->colors['sheet_midlight'];
+		$colorPins = $this->colors['pins'];
+		$colorSheetBase = $this->colors['sheet'];
 		$colorSheetShadow = '#d5cec2';
 
 		// Shadow
@@ -122,73 +126,73 @@ class Bot
 		$xOffset_fold1 = $xOffset + 3;
 		$yOffset_fold1 = $yOffset + 6;
 
-		$this->canvas->drawAt( $xOffset_fold1 + 0, $yOffset_fold1 + 0, $colorHighlightMid );
-		$this->canvas->drawAt( $xOffset_fold1 + 0, $yOffset_fold1 + 1, $colorHighlightMid );
-		$this->canvas->drawAt( $xOffset_fold1 + 0, $yOffset_fold1 + 2, $colorHighlightMid );
-		$this->canvas->drawAt( $xOffset_fold1 + 0, $yOffset_fold1 + 3, $colorHighlightMid );
+		$this->canvas->drawAt( $xOffset_fold1 + 0, $yOffset_fold1 + 0, $colorHighlightLow );
+		$this->canvas->drawAt( $xOffset_fold1 + 0, $yOffset_fold1 + 1, $colorHighlightLow );
+		$this->canvas->drawAt( $xOffset_fold1 + 0, $yOffset_fold1 + 2, $colorHighlightLow );
+		$this->canvas->drawAt( $xOffset_fold1 + 0, $yOffset_fold1 + 3, $colorHighlightLow );
 
-		$this->canvas->drawAt( $xOffset_fold1 + 1, $yOffset_fold1 + 4, $colorHighlightMid );
-		$this->canvas->drawAt( $xOffset_fold1 + 1, $yOffset_fold1 + 5, $colorHighlightMid );
-		$this->canvas->drawAt( $xOffset_fold1 + 1, $yOffset_fold1 + 6, $colorHighlightMid );
-		$this->canvas->drawAt( $xOffset_fold1 + 1, $yOffset_fold1 + 7, $colorHighlightMid );
+		$this->canvas->drawAt( $xOffset_fold1 + 1, $yOffset_fold1 + 4, $colorHighlightLow );
+		$this->canvas->drawAt( $xOffset_fold1 + 1, $yOffset_fold1 + 5, $colorHighlightLow );
+		$this->canvas->drawAt( $xOffset_fold1 + 1, $yOffset_fold1 + 6, $colorHighlightLow );
+		$this->canvas->drawAt( $xOffset_fold1 + 1, $yOffset_fold1 + 7, $colorHighlightLow );
 
-		$this->canvas->drawAt( $xOffset_fold1 + 2, $yOffset_fold1 + 8, $colorHighlightMid );
-		$this->canvas->drawAt( $xOffset_fold1 + 2, $yOffset_fold1 + 9, $colorHighlightMid );
-		$this->canvas->drawAt( $xOffset_fold1 + 2, $yOffset_fold1 + 10, $colorHighlightMid );
+		$this->canvas->drawAt( $xOffset_fold1 + 2, $yOffset_fold1 + 8, $colorHighlightLow );
+		$this->canvas->drawAt( $xOffset_fold1 + 2, $yOffset_fold1 + 9, $colorHighlightLow );
+		$this->canvas->drawAt( $xOffset_fold1 + 2, $yOffset_fold1 + 10, $colorHighlightLow );
 
-		$this->canvas->drawAt( $xOffset_fold1 + 3, $yOffset_fold1 + 11, $colorHighlightMid );
-		$this->canvas->drawAt( $xOffset_fold1 + 3, $yOffset_fold1 + 12, $colorHighlightMid );
-		$this->canvas->drawAt( $xOffset_fold1 + 3, $yOffset_fold1 + 13, $colorHighlightMid );
+		$this->canvas->drawAt( $xOffset_fold1 + 3, $yOffset_fold1 + 11, $colorHighlightLow );
+		$this->canvas->drawAt( $xOffset_fold1 + 3, $yOffset_fold1 + 12, $colorHighlightLow );
+		$this->canvas->drawAt( $xOffset_fold1 + 3, $yOffset_fold1 + 13, $colorHighlightLow );
 
-		$this->canvas->drawAt( $xOffset_fold1 + 4, $yOffset_fold1 + 14, $colorHighlightMid );
-		$this->canvas->drawAt( $xOffset_fold1 + 4, $yOffset_fold1 + 15, $colorHighlightMid );
-		$this->canvas->drawAt( $xOffset_fold1 + 4, $yOffset_fold1 + 16, $colorHighlightMid );
+		$this->canvas->drawAt( $xOffset_fold1 + 4, $yOffset_fold1 + 14, $colorHighlightLow );
+		$this->canvas->drawAt( $xOffset_fold1 + 4, $yOffset_fold1 + 15, $colorHighlightLow );
+		$this->canvas->drawAt( $xOffset_fold1 + 4, $yOffset_fold1 + 16, $colorHighlightLow );
 
-		$this->canvas->drawAt( $xOffset_fold1 + 5, $yOffset_fold1 + 17, $colorHighlightMid );
-		$this->canvas->drawAt( $xOffset_fold1 + 5, $yOffset_fold1 + 18, $colorHighlightMid );
-		$this->canvas->drawAt( $xOffset_fold1 + 5, $yOffset_fold1 + 19, $colorHighlightMid );
+		$this->canvas->drawAt( $xOffset_fold1 + 5, $yOffset_fold1 + 17, $colorHighlightLow );
+		$this->canvas->drawAt( $xOffset_fold1 + 5, $yOffset_fold1 + 18, $colorHighlightLow );
+		$this->canvas->drawAt( $xOffset_fold1 + 5, $yOffset_fold1 + 19, $colorHighlightLow );
 
-		$this->canvas->drawAt( $xOffset_fold1 + 6, $yOffset_fold1 + 20, $colorHighlightMid );
-		$this->canvas->drawAt( $xOffset_fold1 + 6, $yOffset_fold1 + 21, $colorHighlightMid );
-		$this->canvas->drawAt( $xOffset_fold1 + 6, $yOffset_fold1 + 22, $colorHighlightMid );
+		$this->canvas->drawAt( $xOffset_fold1 + 6, $yOffset_fold1 + 20, $colorHighlightLow );
+		$this->canvas->drawAt( $xOffset_fold1 + 6, $yOffset_fold1 + 21, $colorHighlightLow );
+		$this->canvas->drawAt( $xOffset_fold1 + 6, $yOffset_fold1 + 22, $colorHighlightLow );
 
-		$this->canvas->drawAt( $xOffset_fold1 + 7, $yOffset_fold1 + 23, $colorHighlightMid );
-		$this->canvas->drawAt( $xOffset_fold1 + 7, $yOffset_fold1 + 24, $colorHighlightMid );
+		$this->canvas->drawAt( $xOffset_fold1 + 7, $yOffset_fold1 + 23, $colorHighlightLow );
+		$this->canvas->drawAt( $xOffset_fold1 + 7, $yOffset_fold1 + 24, $colorHighlightLow );
 
-		$this->canvas->drawAt( $xOffset_fold1 + 8, $yOffset_fold1 + 25, $colorHighlightMid );
-		$this->canvas->drawAt( $xOffset_fold1 + 8, $yOffset_fold1 + 26, $colorHighlightMid );
+		$this->canvas->drawAt( $xOffset_fold1 + 8, $yOffset_fold1 + 25, $colorHighlightLow );
+		$this->canvas->drawAt( $xOffset_fold1 + 8, $yOffset_fold1 + 26, $colorHighlightLow );
 
-		$this->canvas->drawAt( $xOffset_fold1 + 9, $yOffset_fold1 + 27, $colorHighlightMid );
-		$this->canvas->drawAt( $xOffset_fold1 + 9, $yOffset_fold1 + 28, $colorHighlightMid );
+		$this->canvas->drawAt( $xOffset_fold1 + 9, $yOffset_fold1 + 27, $colorHighlightLow );
+		$this->canvas->drawAt( $xOffset_fold1 + 9, $yOffset_fold1 + 28, $colorHighlightLow );
 
-		$this->canvas->drawAt( $xOffset_fold1 + 10, $yOffset_fold1 + 29, $colorHighlightMid );
-		$this->canvas->drawAt( $xOffset_fold1 + 10, $yOffset_fold1 + 30, $colorHighlightMid );
+		$this->canvas->drawAt( $xOffset_fold1 + 10, $yOffset_fold1 + 29, $colorHighlightLow );
+		$this->canvas->drawAt( $xOffset_fold1 + 10, $yOffset_fold1 + 30, $colorHighlightLow );
 
-		$this->canvas->drawAt( $xOffset_fold1 + 11, $yOffset_fold1 + 31, $colorHighlightMid );
+		$this->canvas->drawAt( $xOffset_fold1 + 11, $yOffset_fold1 + 31, $colorHighlightLow );
 
 		// Fold 2
 		$xOffset_fold2 = $xOffset + 8;
 		$yOffset_fold2 = $yOffset + 7;
 
-		$this->canvas->drawAt( $xOffset_fold2 + 0, $yOffset_fold2 + 0, $colorHighlightLow );
+		$this->canvas->drawAt( $xOffset_fold2 + 0, $yOffset_fold2 + 0, $colorHighlightMid );
 
-		$this->canvas->drawAt( $xOffset_fold2 + 1, $yOffset_fold2 + 1, $colorHighlightLow );
-		$this->canvas->drawAt( $xOffset_fold2 + 2, $yOffset_fold2 + 1, $colorHighlightLow );
+		$this->canvas->drawAt( $xOffset_fold2 + 1, $yOffset_fold2 + 1, $colorHighlightMid );
+		$this->canvas->drawAt( $xOffset_fold2 + 2, $yOffset_fold2 + 1, $colorHighlightMid );
 
-		$this->canvas->drawAt( $xOffset_fold2 + 3, $yOffset_fold2 + 2, $colorHighlightLow );
-		$this->canvas->drawAt( $xOffset_fold2 + 4, $yOffset_fold2 + 2, $colorHighlightLow );
+		$this->canvas->drawAt( $xOffset_fold2 + 3, $yOffset_fold2 + 2, $colorHighlightMid );
+		$this->canvas->drawAt( $xOffset_fold2 + 4, $yOffset_fold2 + 2, $colorHighlightMid );
 
-		$this->canvas->drawAt( $xOffset_fold2 + 5, $yOffset_fold2 + 3, $colorHighlightLow );
-		$this->canvas->drawAt( $xOffset_fold2 + 6, $yOffset_fold2 + 3, $colorHighlightLow );
-		$this->canvas->drawAt( $xOffset_fold2 + 7, $yOffset_fold2 + 3, $colorHighlightLow );
+		$this->canvas->drawAt( $xOffset_fold2 + 5, $yOffset_fold2 + 3, $colorHighlightMid );
+		$this->canvas->drawAt( $xOffset_fold2 + 6, $yOffset_fold2 + 3, $colorHighlightMid );
+		$this->canvas->drawAt( $xOffset_fold2 + 7, $yOffset_fold2 + 3, $colorHighlightMid );
 
-		$this->canvas->drawAt( $xOffset_fold2 + 8, $yOffset_fold2 + 4, $colorHighlightLow );
-		$this->canvas->drawAt( $xOffset_fold2 + 9, $yOffset_fold2 + 4, $colorHighlightLow );
-		$this->canvas->drawAt( $xOffset_fold2 + 10, $yOffset_fold2 + 4, $colorHighlightLow );
+		$this->canvas->drawAt( $xOffset_fold2 + 8, $yOffset_fold2 + 4, $colorHighlightMid );
+		$this->canvas->drawAt( $xOffset_fold2 + 9, $yOffset_fold2 + 4, $colorHighlightMid );
+		$this->canvas->drawAt( $xOffset_fold2 + 10, $yOffset_fold2 + 4, $colorHighlightMid );
 
-		$this->canvas->drawAt( $xOffset_fold2 + 11, $yOffset_fold2 + 5, $colorHighlightLow );
-		$this->canvas->drawAt( $xOffset_fold2 + 12, $yOffset_fold2 + 5, $colorHighlightLow );
-		$this->canvas->drawAt( $xOffset_fold2 + 13, $yOffset_fold2 + 5, $colorHighlightLow );
+		$this->canvas->drawAt( $xOffset_fold2 + 11, $yOffset_fold2 + 5, $colorHighlightMid );
+		$this->canvas->drawAt( $xOffset_fold2 + 12, $yOffset_fold2 + 5, $colorHighlightMid );
+		$this->canvas->drawAt( $xOffset_fold2 + 13, $yOffset_fold2 + 5, $colorHighlightMid );
 
 		// Fold 3a
 		$xOffset_fold3 = $xOffset + 8;
@@ -295,9 +299,9 @@ class Bot
 		$this->canvas->fillRectangle( $xOffset + 1, $yOffset + 0, $frameCols + 0, $frameRows + 0, '#725240' );
 
 		/* Matte */
-		$this->canvas->fillRectangle( $xOffset + 3, $yOffset + 2, $frameCols - 4, $frameRows - 4, '#ffffff' );
+		$this->canvas->fillRectangle( $xOffset + 3, $yOffset + 2, $frameCols - 4, $frameRows - 4, $this->colors['matte'] );
 		/* Canvas */
-		$this->canvas->fillRectangle( $xOffset + 5, $yOffset + 4, $frameCols - 8, $frameRows - 8, '#000000' );
+		$this->canvas->fillRectangle( $xOffset + 7, $yOffset + 6, $frameCols - 12, $frameRows - 12, $this->colors['canvas'] );
 	}
 
 	/**
@@ -412,6 +416,16 @@ class Bot
 		$this->canvas->render( $fileImage );
 
 		return $fileImage;
+	}
+
+	/**
+	 * Set colors
+	 *
+	 * @param array $colors
+	 */
+	public function setColors( array $colors )
+	{
+		$this->colors = $colors;
 	}
 
 	/**

@@ -29,20 +29,19 @@ class Portrait
 	 */
 	public function __construct()
 	{
-		$canvasCols = 16;
+		$canvasCols = 20;
 		$canvasRows = 12;
 		$pixelSize = 10;
 
 		$this->canvas = new Canvas( $canvasCols, $canvasRows, $pixelSize );
-		$this->canvas->setBackgroundColor( '#000000' );
 
 		/* Create pixels */
 		$xOffset = 0;
 		$yOffset = 0;
 
-		for( $row = 0; $row <= 5; $row++ )
+		for( $row = 0; $row <= 6; $row++ )
 		{
-			for( $col = 0; $col <= 3; $col++ )
+			for( $col = 0; $col <= 4; $col++ )
 			{
 				$this->pixels[] = new Pixel( 2, 2, $xOffset + $col * 2, $yOffset + $row * 2 );
 			}
@@ -52,7 +51,7 @@ class Portrait
 	/**
 	 * @param	string	$hashString
 	 */
-	public function applyHash( $hashString )
+	public function applyHash( $hashString, $color )
 	{
 		$hashColor = substr( $hashString, 0, 6 );
 		$hashChars = substr( $hashString, 6 );
@@ -67,7 +66,7 @@ class Portrait
 			$pixel = &$this->pixels[$p];
 			$hashChar = $hashChars[$p];
 
-			$pixel->setSubpixelsWithHexValue( $hashChar, "#{$hashColor}" );
+			$pixel->setSubpixelsWithHexValue( $hashChar, $color );
 		}
 	}
 
@@ -104,6 +103,17 @@ class Portrait
 	}
 
 	/**
+	 * Set background color
+	 *
+	 * @param	string	$backgroundColor
+	 *
+	 */
+	public function setBackgroundColor( $backgroundColor )
+	{
+		$this->canvas->setBackgroundColor( $backgroundColor );
+	}
+
+	/**
 	 * Overwrite pixels array
 	 *
 	 * @param	array	$pixels
@@ -112,6 +122,25 @@ class Portrait
 	{
 		foreach( $pixels as $index => $pixelData )
 		{
+			foreach( $pixelData['subpixels'] as &$subpixels )
+			{
+				foreach( $subpixels as &$subpixel )
+				{
+					$originalR = hexdec( substr( $subpixel, 1, 2 ) );
+					$originalG = hexdec( substr( $subpixel, 3, 2 ) );
+					$originalB = hexdec( substr( $subpixel, 5, 2 ) );
+
+					$diff = 20;
+
+					$newR = $originalR + $diff <= 255 ? $originalR + $diff : 255;
+					$newG = $originalG + $diff <= 255 ? $originalG + $diff : 255;
+					$newB = $originalB + $diff <= 255 ? $originalB + $diff : 255;;
+
+					$newColor = sprintf( '#%02s%02s%02s', dechex( $newR ), dechex( $newG ), dechex( $newB ) );
+					$subpixel = $newColor;
+				}
+			}
+
 			$pixel = Pixel::getInstanceFromData( $pixelData );
 			$this->pixels[$index] = $pixel;
 		}
